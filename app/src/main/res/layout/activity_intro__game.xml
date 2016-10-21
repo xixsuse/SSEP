@@ -8,10 +8,36 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@mipmap/intro_background"
     tools:context="artbaryl.ssep.Intro_Game">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="90sp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="SSEP"
+            android:layout_weight="1"
+            android:id="@+id/title_view" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textColor="#ffffff"
+        android:text="Solar System Exploration Planets"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/LinearLayout1"
+        android:id="@+id/undertitle_view" />
+
 </RelativeLayout>
