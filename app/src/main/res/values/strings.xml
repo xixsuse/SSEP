@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SSEP</string>
+
+    <string name="title_activity_main_menu">Main_menu</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
