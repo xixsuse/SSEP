@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SSEP</string>
-
+    <string name="facebook_app_id">1093869460697687</string>
+    <string name="fb_login_protocol_scheme">fbac44b420f0f270f216b5341925a00aeb</string>
     <string name="title_activity_main_menu">Main_menu</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
