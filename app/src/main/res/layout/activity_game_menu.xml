@@ -8,13 +8,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@mipmap/intro_background"
     tools:context="artbaryl.ssep.GameMenu">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/info"
-        android:text="Hello World!" />
+        android:text="Solar System Exploration Planets" />
 
     <Button
         android:text="Start Game"
@@ -22,36 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="0dp"
-        android:id="@+id/Start" />
-    <Button
-        android:text="Options"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="100dp"
-        android:layout_marginTop="50dp"
-        android:id="@+id/Options" />
-    <Button
-        android:text="Top Score"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="100dp"
-        android:layout_marginTop="100dp"
-        android:id="@+id/TopScore" />
-    <Button
-        android:text="Quit"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="100dp"
-        android:layout_marginTop="150dp"
-        android:id="@+id/Quit" />
+        android:id="@+id/Start"
+        android:onClick="Start_game"/>
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
@@ -62,4 +37,20 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp" />
+
+    <Button
+        android:text="Quit"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Quit"
+        android:layout_below="@+id/TopScore"
+        android:layout_alignStart="@+id/TopScore" />
+
+    <Button
+        android:text="Top Score"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/TopScore"
+        android:layout_below="@+id/Start"
+        android:layout_alignStart="@+id/Start" />
 </RelativeLayout>
