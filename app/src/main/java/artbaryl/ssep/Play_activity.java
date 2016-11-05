@@ -1,7 +1,10 @@
 package artbaryl.ssep;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -18,7 +21,10 @@ import android.view.ViewGroup;
 
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
+
+import layout.Play2_Game;
 
 public class Play_activity extends AppCompatActivity {
 
@@ -36,14 +42,16 @@ public class Play_activity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    Button planetsbutton;
+    CharSequence [] planets = {"Moon", "Mars", "Ganimedes" ,"Europa", "Jupiter", "Titan", "Saturn", "Titania", "Uranus", "Triton", "Neptune"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        planetsbutton = (Button)findViewById(R.id.planet);
         setContentView(R.layout.main_game_tabbed_activity);
-
         /*
         I DO NOT NEED THIS TOOLBAR...
         YOLO PG RULEZ
@@ -64,31 +72,22 @@ public class Play_activity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_play_activity, menu);
-        return true;
-    }
-/*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
+    public void ChoosePlanet(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose destiny");
+        builder.setItems(planets, new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int item) {
+
+            }
+        });
+        builder.create();
+        builder.show();
     }
-*/
-    /**
-     * A placeholder fragment containing a simple view.
-     */
+
+
+
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
@@ -126,19 +125,18 @@ public class Play_activity extends AppCompatActivity {
             }
             else
             {
-                View rootView = inflater.inflate(R.layout.fragment_play_activity, container, false);
-                TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-                textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+                View rootView = inflater.inflate(R.layout.fragment_play2__game, container, false);
                 return rootView;
             }
 
         }
+        public void setText(String text){
+            Button textView = (Button) getActivity().findViewById(R.id.planet);
+            textView.setText(text);
+        }
     }
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
+
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -164,11 +162,12 @@ public class Play_activity extends AppCompatActivity {
                 case 0:
                     return "Page 01";
                 case 1:
-                    return "SECTION 2";
+                    return "Page 02";
                 case 2:
                     return "Page 03";
             }
             return null;
         }
     }
+
 }

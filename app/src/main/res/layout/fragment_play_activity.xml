@@ -9,9 +9,25 @@
     android:background="@mipmap/mainfragment"
     tools:context="artbaryl.ssep.Play_activity$PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+
+    </LinearLayout>
+
+    <Button
+        android:text="Choose Planet"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:id="@+id/planet"
+        android:onClick="Choose"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="57dp" />
 
 </RelativeLayout>
