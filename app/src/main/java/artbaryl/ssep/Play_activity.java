@@ -59,14 +59,7 @@ public class Play_activity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
     }
 
@@ -121,10 +114,24 @@ public class Play_activity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_play_activity, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
+            if(getArguments().getInt(ARG_SECTION_NUMBER)==1)
+            {
+                View rootView = inflater.inflate(R.layout.fragment_play1__news, container, false);
+                return rootView;
+            }
+            if(getArguments().getInt(ARG_SECTION_NUMBER)==3)
+            {
+                View rootView = inflater.inflate(R.layout.fragment_play3__budget, container, false);
+                return rootView;
+            }
+            else
+            {
+                View rootView = inflater.inflate(R.layout.fragment_play_activity, container, false);
+                TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+                textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+                return rootView;
+            }
+
         }
     }
 
@@ -155,11 +162,11 @@ public class Play_activity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Page 01";
                 case 1:
                     return "SECTION 2";
                 case 2:
-                    return "SECTION 3";
+                    return "Page 03";
             }
             return null;
         }
