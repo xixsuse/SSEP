@@ -28,8 +28,9 @@ public class GameMenu extends AppCompatActivity {
 
     private CallbackManager callbackManager;
 
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences ;
     SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class GameMenu extends AppCompatActivity {
                 info.setText("Login attempt failed.");
             }
         });
-        sharedPreferences = getSharedPreferences("artbaryl.ssep", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("artbaryl.ssep", MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
 
@@ -79,6 +80,8 @@ public class GameMenu extends AppCompatActivity {
         {
             editor.putBoolean("Newgame", true);
             editor.commit();
+            Intent intent = new Intent(this, Play_activity.class);
+            startActivity(intent);
         }
         else
         {
