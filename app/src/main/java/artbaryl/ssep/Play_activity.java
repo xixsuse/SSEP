@@ -2,6 +2,7 @@ package artbaryl.ssep;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -88,20 +89,14 @@ public class Play_activity extends AppCompatActivity {
 
 
 
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+    public static class PlaceholderFragment extends Fragment{
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
         }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
+
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -169,5 +164,8 @@ public class Play_activity extends AppCompatActivity {
             return null;
         }
     }
-
+    public void onFragmentInteraction(Uri uri){
+        Toast toast = Toast.makeText(this, "Wheeee!",Toast.LENGTH_SHORT);
+        toast.show();
+    }
 }

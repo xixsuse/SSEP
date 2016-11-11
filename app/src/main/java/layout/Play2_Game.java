@@ -22,9 +22,9 @@ import artbaryl.ssep.R;
  * create an instance of this fragment.
  */
 
-public class Play2_Game extends Fragment {
+public class Play2_Game extends Fragment implements Button.OnClickListener{
     CharSequence [] planets = {"Moon", "Mars", "Ganimedes" ,"Europa", "Jupiter", "Titan", "Saturn", "Titania", "Uranus", "Triton", "Neptune"};
-
+    private Button mbutton;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -71,7 +71,10 @@ public class Play2_Game extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_play2__game, container, false);
+        View view = null;
+        view = inflater.inflate(R.layout.fragment_play2__game, container, false);
+        mbutton =(Button) view.findViewById(R.id.button5);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -1,0 +1,10 @@
+diff a/app/src/main/java/artbaryl/ssep/Play_activity.java b/app/src/main/java/artbaryl/ssep/Play_activity.java	(rejected hunks)
+@@ -44,7 +44,7 @@
+      * The {@link ViewPager} that will host the section contents.
+      */
+     private ViewPager mViewPager;
+-    Button planetsbutton;
++    private Button planetsbutton;
+     CharSequence [] planets = {"Moon", "Mars", "Ganimedes" ,"Europa", "Jupiter", "Titan", "Saturn", "Titania", "Uranus", "Triton", "Neptune"};
+ 
+     @Override
