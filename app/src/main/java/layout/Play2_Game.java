@@ -33,7 +33,7 @@ public class Play2_Game extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    Button b;
     private OnFragmentInteractionListener mListener;
 
     public Play2_Game() {
@@ -65,13 +65,26 @@ public class Play2_Game extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_play2__game, container, false);
+        View v = inflater.inflate(R.layout.fragment_play2__game, container, false);
+
+         b = (Button) v.findViewById(R.id.button5);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                ChoosePlanet(v);
+            }
+        });
+        return v;
+
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -84,18 +97,24 @@ public class Play2_Game extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+    public void ChoosePlanet(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Choose destiny");
+        builder.setItems(planets, new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int item) {
+            b.setText(planets[item]);
+            }
+        });
+        builder.create();
+        builder.show();
     }
 
 

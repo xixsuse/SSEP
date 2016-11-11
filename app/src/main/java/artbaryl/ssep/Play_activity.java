@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,7 +25,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import layout.Play1_News;
 import layout.Play2_Game;
+import layout.Play3_Budget;
 
 public class Play_activity extends AppCompatActivity {
 
@@ -61,39 +64,24 @@ public class Play_activity extends AppCompatActivity {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-
-
-
     }
 
 
 
 
-    public void ChoosePlanet(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Choose destiny");
-        builder.setItems(planets, new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog, int item) {
 
-            }
-        });
-        builder.create();
-        builder.show();
-    }
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
 
-
-    public static class PlaceholderFragment extends Fragment {
+    /**To ejst całkowicie nie potzebne*/
+    public  static   class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
         }
@@ -102,6 +90,7 @@ public class Play_activity extends AppCompatActivity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
+
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -109,7 +98,6 @@ public class Play_activity extends AppCompatActivity {
             fragment.setArguments(args);
             return fragment;
         }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -137,7 +125,7 @@ public class Play_activity extends AppCompatActivity {
     }
 
 
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -145,9 +133,18 @@ public class Play_activity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            Fragment fragment =null;
+            switch (position){
+                case 0:fragment =  Play1_News.newInstance("String","string");
+                    break;
+                case 1:
+                    fragment =  Play2_Game.newInstance("String","string");
+                    break;
+                case 2:
+                    fragment =  Play3_Budget.newInstance("String","string");
+                    break;
+            }
+            return fragment;
         }
 
         @Override

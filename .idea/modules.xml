@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SSEP.iml" filepath="$PROJECT_DIR$/SSEP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssepp.iml" filepath="$PROJECT_DIR$/ssepp.iml" />
     </modules>
   </component>
 </project>
