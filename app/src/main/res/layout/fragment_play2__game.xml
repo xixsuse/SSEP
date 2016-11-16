@@ -8,26 +8,112 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <Button
-        android:text="Button"
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="204dp"
+            android:layout_height="215dp"
+            app:srcCompat="@mipmap/mars"
+            android:id="@+id/mars"
+            android:foregroundGravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_row="0"
+            android:layout_column="7"
+            android:scaleType="centerInside" />
+
+        <ImageView
+            android:layout_width="204dp"
+            android:layout_height="92dp"
+            app:srcCompat="@mipmap/text"
+            android:id="@+id/bg1"
+            android:layout_row="0"
+            android:layout_column="0" />
+
+    </GridLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button5"
+        android:id="@+id/bt"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="70dp" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="43dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/mars"
-        android:layout_marginBottom="40dp"
-        android:id="@+id/imageView2"
-        android:foregroundGravity="center"
-        android:layout_above="@+id/button5"
-        android:layout_alignStart="@+id/button5" />
+        <TextView
+            android:text="Budget:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="27dp"
+            android:textColor="@color/black_overlay"
+            android:id="@+id/budget"
+            android:textSize="30sp"
+            android:textAlignment="textStart" />
 
+        <TextView
+            android:text="30 mln"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/com_facebook_button_login_silver_background_color"
+            android:id="@+id/cash"
+            android:textSize="30sp"
+            android:textAlignment="textStart"
+            android:layout_alignBaseline="@+id/budget"
+            android:layout_alignBottom="@+id/budget"
+            android:layout_toEndOf="@+id/budget" />
+
+        <Button
+            android:text="Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button5"
+            android:layout_marginEnd="59dp"
+            android:layout_marginBottom="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_width="204dp"
+            android:layout_height="92dp"
+            app:srcCompat="@mipmap/text"
+            android:id="@+id/bg2"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_below="@+id/budget"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="13dp" />
+
+        <TextView
+            android:text="Time:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_overlay"
+            android:id="@+id/time"
+            android:textSize="30sp"
+            android:textAlignment="textStart"
+            android:layout_alignBottom="@+id/bg2"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="25dp" />
+
+        <TextView
+            android:text="3 hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/com_facebook_button_login_silver_background_color"
+            android:id="@+id/tl"
+            android:textSize="30sp"
+            android:textAlignment="textStart"
+            android:layout_alignBaseline="@+id/time"
+            android:layout_alignBottom="@+id/time"
+            android:layout_alignEnd="@+id/bg2"
+            android:layout_marginEnd="13dp" />
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

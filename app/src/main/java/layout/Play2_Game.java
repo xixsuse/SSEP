@@ -4,12 +4,23 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import artbaryl.ssep.R;
 
@@ -34,7 +45,10 @@ public class Play2_Game extends Fragment {
     private String mParam1;
     private String mParam2;
     Button b;
+    TextView tl;
+    ImageView mars;
     private OnFragmentInteractionListener mListener;
+    private CountDownTimer countDownTimer;
 
     public Play2_Game() {
         // Required empty public constructor
@@ -66,6 +80,7 @@ public class Play2_Game extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
     }
 
     @Override
@@ -73,8 +88,9 @@ public class Play2_Game extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_play2__game, container, false);
-
-         b = (Button) v.findViewById(R.id.button5);
+        mars = (ImageView) v.findViewById(R.id.mars);
+        b = (Button) v.findViewById(R.id.button5);
+        tl = (TextView) v.findViewById(R.id.tl);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -87,12 +103,7 @@ public class Play2_Game extends Fragment {
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+
 
     @Override
     public void onAttach(Context context) {
@@ -111,6 +122,8 @@ public class Play2_Game extends Fragment {
         builder.setItems(planets, new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int item) {
             b.setText(planets[item]);
+                start();
+               hideplanets(item);
             }
         });
         builder.create();
@@ -123,9 +136,58 @@ public class Play2_Game extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
-    public void setText(String text){
-        Button button = (Button) getView().findViewById(R.id.button5);
-        button.setText(text);
+    public void hideplanets (int item) {
+        switch (item){
+            case 0:
+                mars.setImageResource(R.mipmap.moon);
+                break;
+            case 1:
+                mars.setImageResource(R.mipmap.mars);
+                break;
+            case 2:
+                mars.setImageResource(R.mipmap.ganimedes);
+                break;
+            case 3:
+                mars.setImageResource(R.mipmap.europa);
+                break;
+            case 4:
+                mars.setImageResource(R.mipmap.jupiter);
+                break;
+            case 5:
+                mars.setImageResource(R.mipmap.titan);
+                break;
+            case 6:
+                mars.setImageResource(R.mipmap.saturn);
+                break;
+            case 7:
+                mars.setImageResource(R.mipmap.titania);
+                break;
+            case 8:
+                mars.setImageResource(R.mipmap.uranos);
+                break;
+            case 9:
+                mars.setImageResource(R.mipmap.triton);
+                break;
+            case 10:
+                mars.setImageResource(R.mipmap.neptune);
+                break;
+        }
     }
+
+    private void start()
+    {
+        tl.setText("start");
+        countDownTimer : new CountDownTimer(600*1000, 1000){
+            @Override
+            public void onTick(long millisUntilFinished)
+            {
+                tl.setText(""+millisUntilFinished/1000);
+            }
+          @Override
+            public void onFinish(){
+                tl.setText("Done !");
+          }
+        }.start();
+    }
+
 }
