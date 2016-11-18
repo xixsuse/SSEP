@@ -1,11 +1,13 @@
 package layout;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -15,13 +17,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import artbaryl.ssep.Missions;
+import artbaryl.ssep.Play_activity;
 import artbaryl.ssep.R;
 
 /**
@@ -35,34 +32,31 @@ import artbaryl.ssep.R;
 
 public class Play2_Game extends Fragment {
     CharSequence [] planets = {"Moon", "Mars", "Ganimedes" ,"Europa", "Jupiter", "Titan", "Saturn", "Titania", "Uranus", "Triton", "Neptune"};
+    SharedPreferences sharedPreferences ;
+    SharedPreferences.Editor editor;
+    NotificationManager notificationManager;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    boolean isNotificActive = false;
+
+    int notifID = 33;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     Button b;
+    boolean timer;
     TextView tl;
     ImageView mars;
     private OnFragmentInteractionListener mListener;
     private CountDownTimer countDownTimer;
+    Play_activity siema = new Play_activity();
 
     public Play2_Game() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Play2_Game.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static Play2_Game newInstance(String param1, String param2) {
         Play2_Game fragment = new Play2_Game();
         Bundle args = new Bundle();
@@ -79,8 +73,8 @@ public class Play2_Game extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
+        sharedPreferences = this.getActivity().getSharedPreferences("artbaryl.ssep", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     @Override
@@ -98,9 +92,6 @@ public class Play2_Game extends Fragment {
             }
         });
         return v;
-
-
-
     }
 
 
@@ -122,8 +113,14 @@ public class Play2_Game extends Fragment {
         builder.setItems(planets, new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int item) {
             b.setText(planets[item]);
-                start();
+                if(sharedPreferences.getBoolean("timer", false)==false) {
+                    start();
+                }
                hideplanets(item);
+                //siema.notification();
+                editor.putInt("photo", item);
+                editor.commit();
+
             }
         });
         builder.create();
@@ -176,18 +173,24 @@ public class Play2_Game extends Fragment {
 
     private void start()
     {
-        tl.setText("start");
+        editor.putBoolean("timer", true);
+        editor.commit();
         countDownTimer : new CountDownTimer(600*1000, 1000){
             @Override
             public void onTick(long millisUntilFinished)
             {
+
                 tl.setText(""+millisUntilFinished/1000);
             }
           @Override
             public void onFinish(){
                 tl.setText("Done !");
+                editor.putBoolean("timer", false);
+                editor.commit();
+
           }
         }.start();
     }
+
 
 }

@@ -1,10 +1,18 @@
 package artbaryl.ssep;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -31,42 +39,24 @@ import layout.Play3_Budget;
 
 public class Play_activity extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    int notificationId;
+    NotificationManager notificationManager;
+    Notification.Builder builder;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
+
     private ViewPager mViewPager;
-    Button planetsbutton;
-    CharSequence [] planets = {"Moon", "Mars", "Ganimedes" ,"Europa", "Jupiter", "Titan", "Saturn", "Titania", "Uranus", "Triton", "Neptune"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        planetsbutton = (Button)findViewById(R.id.planet);
         setContentView(R.layout.main_game_tabbed_activity);
-        /*
-        I DO NOT NEED THIS TOOLBAR...
-        YOLO PG RULEZ
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        */
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        //start();
     }
 
 
@@ -75,13 +65,30 @@ public class Play_activity extends AppCompatActivity {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
+    public void Checkmission(View view) {
+        Intent intent = new Intent(this, Missions.class);
+        startActivity(intent);
+    }
 
-    /**To ejst całkowicie nie potzebne*/
+    public void Telescope(View view) {
+        Intent intent = new Intent(this, Telescope.class);
+        startActivity(intent);
+    }
+
+
+    public void Humanmission(View view) {
+        Intent intent = new Intent(this, humanmission.class);
+        startActivity(intent);
+    }
+
+    public void Explorer(View view) {
+        Intent intent = new Intent(this, Explorer.class);
+        startActivity(intent);
+    }
+
+
     public  static   class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+
 
         public PlaceholderFragment() {
         }
@@ -165,6 +172,37 @@ public class Play_activity extends AppCompatActivity {
             }
             return null;
         }
+
     }
+
+
+
+    public void start(){
+        countDownTimer : new CountDownTimer(10*1000, 1000){
+            @Override
+            public void onTick(long millisUntilFinished)
+            {
+            }
+            @Override
+            public void onFinish(){
+
+                notification();
+
+            }
+        }.start();
+    }
+    public void notification()
+    {
+
+        builder = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.ganimedes)
+                .setAutoCancel(true)
+                .setContentTitle("Elo")
+                .setContentText("Ziomek hehe");
+        notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(notificationId, builder.build());
+    }
+
+
 
 }

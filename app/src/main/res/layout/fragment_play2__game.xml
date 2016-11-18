@@ -67,16 +67,6 @@
             android:layout_alignBottom="@+id/budget"
             android:layout_toEndOf="@+id/budget" />
 
-        <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button5"
-            android:layout_marginEnd="59dp"
-            android:layout_marginBottom="48dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
-
         <ImageView
             android:layout_width="204dp"
             android:layout_height="92dp"
@@ -112,6 +102,51 @@
             android:layout_alignBottom="@+id/time"
             android:layout_alignEnd="@+id/bg2"
             android:layout_marginEnd="13dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button8"
+            android:onClick="Explorer"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/button3"
+            android:text="explorer mission" />
+
+        <Button
+            android:text="Choose planet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button5"
+            android:layout_marginEnd="31dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:text="Data base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button6"
+            android:onClick="Checkmission"
+            android:layout_above="@+id/button3"
+            android:layout_toStartOf="@+id/cash" />
+
+        <Button
+            android:text="Telescope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:onClick="Telescope"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/button6" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button7"
+            android:onClick="Humanmission"
+            android:text="Human Mission"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/button8" />
 
     </RelativeLayout>
 
