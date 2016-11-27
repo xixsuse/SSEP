@@ -17,18 +17,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import artbaryl.ssep.Missions;
 import artbaryl.ssep.Play_activity;
 import artbaryl.ssep.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link Play2_Game.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link Play2_Game#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 
 public class Play2_Game extends Fragment {
     CharSequence [] planets = {"Moon", "Mars", "Ganimedes" ,"Europa", "Jupiter", "Titan", "Saturn", "Titania", "Uranus", "Triton", "Neptune"};
@@ -126,8 +118,6 @@ public class Play2_Game extends Fragment {
         builder.create();
         builder.show();
     }
-
-
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

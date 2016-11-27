@@ -15,7 +15,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@mipmap/europa"
+        app:srcCompat="@mipmap/moon"
         android:id="@+id/imageView"
         android:layout_marginStart="406dp"
         android:layout_marginBottom="166dp"
@@ -38,4 +38,58 @@
         android:textSize="30sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Planet name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/planetname"
+        android:textSize="30sp"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:text="Weight: ?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/degrees"
+        android:layout_alignStart="@+id/degrees"
+        android:id="@+id/textView3"
+        android:textSize="30sp" />
+
+    <TextView
+        android:text="Distance: ?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/distance"
+        android:layout_alignStart="@+id/distance"
+        android:id="@+id/textView5"
+        android:textSize="30sp" />
+
+    <TextView
+        android:text="Gravity: ?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/distance"
+        android:textSize="30sp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:text="Measurement error: ?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:textSize="20sp"
+        android:layout_below="@+id/planetname"
+        android:layout_alignStart="@+id/planetname" />
+
+    <TextView
+        android:text="Degrees: ?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/degrees"
+        android:textSize="30sp"
+        android:layout_below="@+id/textView6"
+        android:layout_alignStart="@+id/textView6" />
 </RelativeLayout>
