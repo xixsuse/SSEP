@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import layout.planetdatabase;
 
@@ -16,7 +19,7 @@ public class Missions extends AppCompatActivity {
     SharedPreferences sharedPreferences ;
     SharedPreferences.Editor editor;
     private ImageView mars;
-    private TextView planet;
+    private TextView planet, error, degrees, weight, distance, gravity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,14 +31,22 @@ public class Missions extends AppCompatActivity {
         mars = (ImageView) findViewById(R.id.imageView);
         hideplanets(sharedPreferences.getInt("photo", 0));
         planet = (TextView)findViewById(R.id.planetname);
+        error = (TextView)findViewById(R.id.textView6);
+        degrees = (TextView)findViewById(R.id.degrees);
+        weight = (TextView)findViewById(R.id.textView3);
+        distance = (TextView)findViewById(R.id.textView5);
+        gravity = (TextView)findViewById(R.id.distance);
 
         planetdatabase zb = new planetdatabase(this);
-        zb.dodajPlanete("Moon", "250", "00123", "01654", "384403");
-        zb.dodajPlanete("Mars", "250", "0.0123", "0.1654", "384403");
         Cursor k = zb.dajWszystkie();
-        k.moveToPosition(0);
-            String imie = k.getString(1);
-            planet.setText(imie);
+        k.moveToPosition(sharedPreferences.getInt("photo", 0));
+            planet.setText(k.getString(1));
+            error.setText("Measurement error: ?");
+            degrees.setText("Degrees: " + k.getString(2) +" K");
+            weight.setText("Weight: " + k.getString(3)+ " earth mass");
+            distance.setText("Distance: "+ k.getString(5) +" j.a.");
+            gravity.setText("Gravity: " + k.getString(4) + " g");
+
 
     }
 

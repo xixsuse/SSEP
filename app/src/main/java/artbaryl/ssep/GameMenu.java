@@ -21,6 +21,8 @@ import com.facebook.login.widget.LoginButton;
 
 import org.w3c.dom.Text;
 
+import layout.planetdatabase;
+
 public class GameMenu extends AppCompatActivity {
 
     private TextView info;
@@ -80,6 +82,8 @@ public class GameMenu extends AppCompatActivity {
         {
             editor.putBoolean("Newgame", true);
             editor.commit();
+            planetdatabase zb = new planetdatabase(this);
+            zb.makedatabase();
             Intent intent = new Intent(this, Play_activity.class);
             startActivity(intent);
         }

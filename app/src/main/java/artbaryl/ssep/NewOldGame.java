@@ -3,6 +3,7 @@ package artbaryl.ssep;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import layout.planetdatabase;
 
 public class NewOldGame extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -29,11 +32,6 @@ public class NewOldGame extends AppCompatActivity {
         editor = sharedPreferences.edit();
     }
 
-    public void Return(View view) {
-        Intent intent = new Intent(".GameMenu");
-        startActivity(intent);
-
-    }
 
     @Override
     public void onPause()

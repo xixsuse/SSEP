@@ -1,14 +1,34 @@
 package artbaryl.ssep;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import layout.ProstySerwis;
+import layout.planetdatabase;
 
 public class Telescope extends AppCompatActivity {
     SharedPreferences sharedPreferences ;
     SharedPreferences.Editor editor;
+    private TextView object, accuracy, cost;
+    private EditText days;
+    int day;
+    int notificationId;
+    NotificationManager notificationManager;
+    Notification.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,5 +37,31 @@ public class Telescope extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("artbaryl.ssep", MODE_PRIVATE);
         editor = sharedPreferences.edit();
         setContentView(R.layout.activity_telescope);
+        object = (TextView)findViewById(R.id.textView4);
+        accuracy = (TextView)findViewById(R.id.textView8);
+        planetdatabase zb = new planetdatabase(this);
+        Cursor k = zb.dajWszystkie();
+        k.moveToPosition(sharedPreferences.getInt("photo", 0));
+        object.setText("How many days you want observe " + k.getString(1)+"?");
+        days = (EditText)findViewById(R.id.editText);
+        cost = (TextView)findViewById(R.id.textView2);
+    }
+
+    public void days(View view) {
+            day = 20 - Integer.parseInt(days.getText().toString());
+            accuracy.setText("Measurement error is: " + day * 2 + "%");
+            if (day == 20)
+                accuracy.setText("Measurement error is: " + 100 + "%");
+            cost.setText("Total cost: " + days.getText().toString() + "mld");
+    }
+    public void start(View view) {
+        startService(new Intent(getBaseContext(), ProstySerwis.class));
+        builder = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.ganimedes)
+                .setAutoCancel(true)
+                .setContentTitle("Elo")
+                .setContentText("Ziomek hehe");
+        notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(notificationId, builder.build());
     }
 }

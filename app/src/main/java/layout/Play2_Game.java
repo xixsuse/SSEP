@@ -109,7 +109,6 @@ public class Play2_Game extends Fragment {
                     start();
                 }
                hideplanets(item);
-                //siema.notification();
                 editor.putInt("photo", item);
                 editor.commit();
 

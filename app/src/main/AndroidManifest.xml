@@ -64,15 +64,22 @@
             android:name=".Missions"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Explorer"
+        <activity
+            android:name=".Explorer"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".Telescope"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Telescope"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".humanmission"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".humanmission"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <service
+            android:name="layout.ProstySerwis"
+            android:exported="false"></service>
     </application>
 
 </manifest>
