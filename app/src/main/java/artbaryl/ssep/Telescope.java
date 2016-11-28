@@ -1,7 +1,9 @@
 package artbaryl.ssep;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +18,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import layout.ProstySerwis;
 import layout.planetdatabase;
@@ -55,7 +58,20 @@ public class Telescope extends AppCompatActivity {
             cost.setText("Total cost: " + days.getText().toString() + "mld");
     }
     public void start(View view) {
-        startService(new Intent(getBaseContext(), ProstySerwis.class));
+        int i = 5;
+        Intent intent = new Intent(this, MyBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this.getApplicationContext(), 234324243, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
+                + (i * 1000), 0, pendingIntent);
+  /*alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
+    + (i * 1000), 8000, pendingIntent);*/
+        Toast.makeText(this, "Starting alarm in " + i + " seconds",
+                Toast.LENGTH_LONG).show();
+    }
+    public void notification()
+    {
         builder = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ganimedes)
                 .setAutoCancel(true)

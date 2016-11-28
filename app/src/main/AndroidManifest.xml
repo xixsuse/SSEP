@@ -79,7 +79,12 @@
 
         <service
             android:name="layout.ProstySerwis"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <receiver
+            android:name=".MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
