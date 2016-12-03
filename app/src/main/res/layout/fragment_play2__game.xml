@@ -113,7 +113,7 @@
             android:text="explorer mission" />
 
         <Button
-            android:text="Choose planet"
+            android:text="Moon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button5"

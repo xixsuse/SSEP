@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import artbaryl.ssep.Play_activity;
 import artbaryl.ssep.R;
@@ -106,14 +107,19 @@ public class Play2_Game extends Fragment {
         builder.setTitle("Choose destiny");
         builder.setItems(planets, new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int item) {
-            b.setText(planets[item]);
                 if(sharedPreferences.getBoolean("timer", false)==false) {
                     start();
                 }
-               hideplanets(item);
-                editor.putInt("photo", item);
-                editor.commit();
-
+                if(sharedPreferences.getInt("level", 0)>=item) {
+                    hideplanets(item);
+                    editor.putInt("photo", item);
+                    editor.commit();
+                    b.setText(planets[item]);
+                }
+                else
+                {
+                    Toast.makeText(getActivity(), "First you need to check planets that are closer", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         builder.create();

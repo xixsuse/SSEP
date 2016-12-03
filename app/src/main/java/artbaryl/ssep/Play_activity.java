@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -32,6 +33,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import layout.Play1_News;
 import layout.Play2_Game;
@@ -43,7 +45,8 @@ public class Play_activity extends AppCompatActivity {
     int notificationId;
     NotificationManager notificationManager;
     Notification.Builder builder;
-
+    SharedPreferences sharedPreferences ;
+    SharedPreferences.Editor editor;
 
     private ViewPager mViewPager;
 
@@ -56,6 +59,8 @@ public class Play_activity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        sharedPreferences = getSharedPreferences("artbaryl.ssep", MODE_PRIVATE);
+
         //start();
     }
 
@@ -77,13 +82,25 @@ public class Play_activity extends AppCompatActivity {
 
 
     public void Humanmission(View view) {
-        Intent intent = new Intent(this, humanmission.class);
-        startActivity(intent);
+        if(sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)==true) {
+            Intent intent = new Intent(this, humanmission.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"You need use telescope first!",Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void Explorer(View view) {
-        Intent intent = new Intent(this, Explorer.class);
-        startActivity(intent);
+        if(sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)==true) {
+            Intent intent = new Intent(this, Explorer.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"You need use telescope first!",Toast.LENGTH_SHORT).show();
+        }
     }
 
 

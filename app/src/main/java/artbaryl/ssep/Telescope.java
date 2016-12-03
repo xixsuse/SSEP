@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import layout.Play2_Game;
 import layout.ProstySerwis;
 import layout.planetdatabase;
 
@@ -58,12 +59,18 @@ public class Telescope extends AppCompatActivity {
             cost.setText("Total cost: " + days.getText().toString() + "mld");
     }
     public void start(View view) {
-        int accuracy=day*2;
-        planetdatabase zb = new planetdatabase(this);
-        zb.change_accuracy(sharedPreferences.getInt("photo", 0)+1,accuracy );
-        editor.putFloat("money", sharedPreferences.getFloat("money", 30)-Integer.parseInt(days.getText().toString()));
-        editor.commit();
-
+        if(sharedPreferences.getFloat("money", 30)>=Integer.parseInt(days.getText().toString())) {
+            int accuracy = day * 2;
+            planetdatabase zb = new planetdatabase(this);
+            zb.change_accuracy(sharedPreferences.getInt("photo", 0) + 1, accuracy);
+            editor.putFloat("money", sharedPreferences.getFloat("money", 30) - Integer.parseInt(days.getText().toString()));
+            editor.putBoolean(String.valueOf(sharedPreferences.getInt("level", 0)) + "level", true);
+            editor.commit();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "You have no money", Toast.LENGTH_SHORT).show();
+        }
         /*int i = 5;
         Intent intent = new Intent(this, MyBroadcastReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
