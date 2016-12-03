@@ -62,6 +62,10 @@ public class Missions extends AppCompatActivity {
             planet_weight=random*Float.parseFloat(k.getString(3));
             planet_distance = random*Float.parseFloat(k.getString(5));
             planet_gravity = random*Float.parseFloat(k.getString(4));
+            planet_degrees=planet_degrees-planet_degrees%1f;
+            planet_weight=planet_weight-planet_weight%0.00001f;
+            planet_gravity=planet_gravity-planet_gravity%0.0001f;
+            planet_distance=planet_distance-planet_distance%0.001f;
             error.setText("Measurement error: " + planet_measurement + "%");
             degrees.setText("Degrees: " + planet_degrees + " K");
             weight.setText("Weight: " + planet_weight + " earth mass");

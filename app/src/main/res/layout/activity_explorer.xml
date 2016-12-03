@@ -11,4 +11,158 @@
     android:background="@mipmap/explorer"
     tools:context="artbaryl.ssep.Explorer">
 
+    <TextView
+        android:text="Prepare for degrees:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView9"
+        android:textSize="25sp"
+        android:layout_below="@+id/textView10"
+        android:layout_alignStart="@+id/textView10"
+        tools:text="Prepare for degrees:" />
+
+    <TextView
+        android:text="Prepare for gravity:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11"
+        android:textSize="25sp"
+        android:layout_below="@+id/textView9"
+        android:layout_alignStart="@+id/textView9"
+        tools:text="Prepare for gravity:" />
+
+    <TextView
+        android:text="Measurement error:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView15"
+        android:textSize="25sp"
+        tools:text="Measurement error:"
+        android:layout_below="@+id/textView13"
+        android:layout_alignStart="@+id/textView13" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editText3"
+        android:maxLength="3"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_toEndOf="@+id/textView9"
+        android:textSize="18sp"
+        android:text="0" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:textSize="18sp"
+        android:layout_alignBottom="@+id/textView11"
+        android:layout_toEndOf="@+id/textView11"
+        android:text="0" />
+
+    <TextView
+        android:text="Destiny distance:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:textSize="25sp"
+        tools:text="Destiny distance:"
+        android:layout_below="@+id/textView11"
+        android:layout_alignStart="@+id/textView11" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="explorer_start"
+        android:id="@+id/button11" />
+
+    <Button
+        android:text="Count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/button12"
+        android:layout_marginStart="14dp"
+        android:onClick="explorer_count"
+        android:id="@+id/button13" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editText5"
+        android:maxLength="4"
+        android:textSize="18sp"
+        android:layout_above="@+id/textView15"
+        android:layout_toEndOf="@+id/textView13"
+        android:text="0" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editText4"
+        android:maxLength="2"
+        android:textSize="18sp"
+        android:layout_above="@+id/textView16"
+        android:layout_toEndOf="@+id/textView15"
+        android:text="0" />
+
+    <Button
+        android:text="Help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="eplorer_help"
+        android:id="@+id/button14" />
+
+    <Button
+        android:text="Check database"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button12"
+        android:layout_alignParentBottom="true"
+        android:onClick="explorer_database"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Price: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView16"
+        android:textSize="25sp"
+        tools:text="Price: "
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/textView15"
+        android:layout_alignEnd="@+id/button13" />
+
+    <TextView
+        android:text="Planet name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:textSize="40sp"
+        android:layout_alignBottom="@+id/button14"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Time:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView12"
+        android:textSize="25sp"
+        tools:text="Time:"
+        android:layout_below="@+id/textView16"
+        android:layout_alignStart="@+id/textView16" />
+
 </RelativeLayout>
