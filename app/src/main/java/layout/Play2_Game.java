@@ -38,7 +38,7 @@ public class Play2_Game extends Fragment {
     private String mParam2;
     Button b;
     boolean timer;
-    TextView tl;
+    TextView tl,cash;
     ImageView mars;
     private OnFragmentInteractionListener mListener;
     private CountDownTimer countDownTimer;
@@ -77,6 +77,8 @@ public class Play2_Game extends Fragment {
         mars = (ImageView) v.findViewById(R.id.mars);
         b = (Button) v.findViewById(R.id.button5);
         tl = (TextView) v.findViewById(R.id.tl);
+        cash = (TextView) v.findViewById(R.id.cash);
+        cash.setText(sharedPreferences.getFloat("money", 30) + "mln");
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

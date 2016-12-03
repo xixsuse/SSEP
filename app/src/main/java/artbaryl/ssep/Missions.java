@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 import layout.planetdatabase;
 
 public class Missions extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class Missions extends AppCompatActivity {
     SharedPreferences.Editor editor;
     private ImageView mars;
     private TextView planet, error, degrees, weight, distance, gravity;
+    float planet_measurement, planet_degrees, planet_weight, planet_distance,planet_gravity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +43,31 @@ public class Missions extends AppCompatActivity {
         planetdatabase zb = new planetdatabase(this);
         Cursor k = zb.dajWszystkie();
         k.moveToPosition(sharedPreferences.getInt("photo", 0));
-            planet.setText(k.getString(1));
-            error.setText("Measurement error: ?");
-            degrees.setText("Degrees: " + k.getString(2) +" K");
-            weight.setText("Weight: " + k.getString(3)+ " earth mass");
-            distance.setText("Distance: "+ k.getString(5) +" j.a.");
-            gravity.setText("Gravity: " + k.getString(4) + " g");
+        planet.setText(k.getString(1));
 
+        if(Integer.parseInt(k.getString(6))==100)
+        {
+            error.setText("Measurement error: ?");
+            degrees.setText("Degrees: ? K");
+            weight.setText("Weight: ? earth mass");
+            distance.setText("Distance: ? j.a.");
+            gravity.setText("Gravity: ? g");
+        }
+        else {
+            planet_measurement=Float.parseFloat(k.getString(6));
+            Random rand = new Random();
+            float random = rand.nextFloat() * (2* planet_measurement) + 100 - planet_measurement;
+            random=random/100.0f;
+            planet_degrees=random*Float.parseFloat(k.getString(2));
+            planet_weight=random*Float.parseFloat(k.getString(3));
+            planet_distance = random*Float.parseFloat(k.getString(5));
+            planet_gravity = random*Float.parseFloat(k.getString(4));
+            error.setText("Measurement error: " + planet_measurement + "%");
+            degrees.setText("Degrees: " + planet_degrees + " K");
+            weight.setText("Weight: " + planet_weight + " earth mass");
+            distance.setText("Distance: " + planet_distance + " j.a.");
+            gravity.setText("Gravity: " + planet_gravity + " g");
+        }
 
     }
 
