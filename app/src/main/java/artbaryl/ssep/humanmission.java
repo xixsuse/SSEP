@@ -44,7 +44,7 @@ public class humanmission extends AppCompatActivity {
         money = 5*Integer.parseInt(k.getString(6));
         randcheck = 2*Integer.parseInt(k.getString(6));
         aSwitch = (Switch)findViewById(R.id.switch2);
-        success.setText("mission success: " + 2*Integer.parseInt(k.getString(6)) + "%");
+        success.setText("mission success: " + (100-randcheck) + "%");
         cost.setText("Cost of the mission: " + 5*Integer.parseInt(k.getString(6)) + "mln" );
         total.setText("Total cost: " + money + "mln");
         aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
