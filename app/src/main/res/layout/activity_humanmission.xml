@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_humanmission"
     android:layout_width="match_parent"
@@ -10,5 +11,97 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@mipmap/rocket"
     tools:context="artbaryl.ssep.humanmission">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/background"
+        android:id="@+id/imageView3"
+        android:scaleType="matrix"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Cost of mission:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView21"
+        android:textSize="25sp"
+        android:textAlignment="textStart"
+        android:layout_below="@+id/textView20"
+        android:layout_alignStart="@+id/textView20" />
+
+    <TextView
+        android:text="Insurance?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView18"
+        android:textSize="25sp"
+        android:textAlignment="textStart"
+        android:layout_below="@+id/textView21"
+        android:layout_alignStart="@+id/textView21" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch2"
+        android:checked="false"
+        android:layout_alignBottom="@+id/textView18"
+        android:layout_toEndOf="@+id/textView20" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="humanmission"
+        android:id="@+id/button15" />
+
+    <TextView
+        android:text="Total cost:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/totalcost"
+        android:textSize="25sp"
+        android:layout_alignTop="@+id/button15"
+        android:layout_alignStart="@+id/textView18" />
+
+    <TextView
+        android:text="Planetname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView14"
+        android:textSize="40sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="7dp" />
+
+    <TextView
+        android:text="The probability of"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView19"
+        android:textSize="25sp"
+        android:layout_below="@+id/textView14"
+        android:layout_alignStart="@+id/textView14" />
+
+    <TextView
+        android:text="mission success: 3%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView20"
+        android:textSize="25sp"
+        android:layout_below="@+id/textView19"
+        android:layout_alignStart="@+id/textView19" />
+
+    <TextView
+        android:text="You will get back 80% of cost if mission failed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView23"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/textView18"
+        android:layout_alignStart="@+id/textView18" />
 
 </RelativeLayout>

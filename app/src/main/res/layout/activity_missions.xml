@@ -13,6 +13,23 @@
     tools:context="artbaryl.ssep.Missions">
 
     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/background"
+        android:id="@+id/imageView4"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/background"
+        android:id="@+id/imageView2"
+        android:layout_marginStart="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/planetname" />
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srcCompat="@mipmap/moon"
@@ -21,12 +38,6 @@
         android:layout_marginBottom="166dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/background"
-        android:id="@+id/imageView2" />
 
     <TextView
         android:text="Planet name"
@@ -92,4 +103,5 @@
         android:textSize="30sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
 </RelativeLayout>

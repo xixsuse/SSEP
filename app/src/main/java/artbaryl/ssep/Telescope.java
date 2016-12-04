@@ -66,6 +66,8 @@ public class Telescope extends AppCompatActivity {
             editor.putFloat("money", sharedPreferences.getFloat("money", 30) - Integer.parseInt(days.getText().toString()));
             editor.putBoolean(String.valueOf(sharedPreferences.getInt("level", 0)) + "level", true);
             editor.commit();
+            Toast.makeText(getApplicationContext(), "We have new data!", Toast.LENGTH_SHORT).show();
+
         }
         else
         {
