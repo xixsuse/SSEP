@@ -31,6 +31,7 @@ public class Telescope extends AppCompatActivity {
     private EditText days;
     int day;
     int notificationId;
+    String check;
     NotificationManager notificationManager;
     Notification.Builder builder;
     @Override
@@ -52,11 +53,18 @@ public class Telescope extends AppCompatActivity {
     }
 
     public void days(View view) {
+            check = days.getText().toString();
+        if (check.matches("")) {
+            Toast.makeText(this, "You did not complete all data", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else{
             day = 20 - Integer.parseInt(days.getText().toString());
             accuracy.setText("Measurement error is: " + day * 2 + "%");
             if (day == 20)
                 accuracy.setText("Measurement error is: " + 100 + "%");
             cost.setText("Total cost: " + days.getText().toString() + "mld");
+    }
     }
     public void start(View view) {
         if(sharedPreferences.getFloat("money", 30)>=Integer.parseInt(days.getText().toString())) {

@@ -23,7 +23,6 @@ public class GameMenu extends AppCompatActivity {
 
     private TextView info;
     private LoginButton loginButton;
-
     private CallbackManager callbackManager;
 
     SharedPreferences sharedPreferences ;

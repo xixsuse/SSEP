@@ -20,6 +20,7 @@ public class Explorer extends AppCompatActivity {
     private TextView name, price, time;
     private EditText degrees, gravity, distance, error;
     boolean check=false;
+    String check1, check2, check3, check4;
     float count=0, shared_error=100, explorer_degrees, explorer_gravity, explorer_distance, explorer_error, money;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,15 @@ public class Explorer extends AppCompatActivity {
     }
 
     public void explorer_count(View view) {
+        check1 = degrees.getText().toString();
+        check2 = distance.getText().toString();
+        check3 = gravity.getText().toString();
+        check4 = error.getText().toString();
+        if (check1.matches("") || check2.matches("") || check3.matches("") || check4.matches("")) {
+            Toast.makeText(this, "You did not complete all data", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else{
             planetdatabase zb = new planetdatabase(this);
             Cursor k = zb.dajWszystkie();
             check=true;
@@ -81,6 +91,7 @@ public class Explorer extends AppCompatActivity {
                 count+=Math.pow((20-check)/4,2);
             price.setText("Price: " + count + "mln");
             money=count;
+        }
     }
 
     public void explorer_database(View view) {
