@@ -1,6 +1,7 @@
 package layout;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,12 +18,13 @@ import artbaryl.ssep.R;
 public class Play1_News extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    SharedPreferences sharedPreferences ;
+    SharedPreferences.Editor editor;
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    TextView YourNews;
+    TextView YourNews1, YourNews2, YourNews3;
     public Play1_News() {
     }
 
@@ -43,6 +45,8 @@ public class Play1_News extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        sharedPreferences = this.getActivity().getSharedPreferences("artbaryl.ssep", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     @Override
@@ -50,11 +54,12 @@ public class Play1_News extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_play1__news, container, false);
 
-        YourNews = (TextView) v.findViewById(R.id.textView22);
-//        setNews();
-        YourNews.setText("The new company enters the space industry. They prepares the first rocket to land on the moon.");
+        YourNews1 = (TextView) v.findViewById(R.id.textView24);
+        YourNews2 = (TextView) v.findViewById(R.id.textView25);
+        YourNews3 = (TextView) v.findViewById(R.id.textView22);
+        setNews();
 
-        return inflater.inflate(R.layout.fragment_play1__news, container, false);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -80,6 +85,14 @@ public class Play1_News extends Fragment {
 
     void setNews()
     {
-        YourNews.setText("The new company enters the space industry.\n They prepares the first rocket to land on the moon.\n");
+        YourNews1.setText("The new company enters the space industry.");
+        YourNews2.setText("They prepares the first rocket to land on the moon.");
+        YourNews3.setText("Let's check what they can do!");
+        if(sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)==true)
+        {
+            YourNews1.setText("Scientists used telescope to observe the moon");
+            YourNews2.setText("They are waiting " + sharedPreferences.getInt("days", 0) + " days");
+            YourNews3.setText("Let's check what they can do!");
+        }
     }
 }

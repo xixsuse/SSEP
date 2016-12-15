@@ -71,11 +71,13 @@ public class Play_activity extends AppCompatActivity {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     public void Checkmission(View view) {
+        finish();
         Intent intent = new Intent(this, Missions.class);
         startActivity(intent);
     }
 
     public void Telescope(View view) {
+        finish();
         Intent intent = new Intent(this, Telescope.class);
         startActivity(intent);
     }
@@ -83,6 +85,7 @@ public class Play_activity extends AppCompatActivity {
 
     public void Humanmission(View view) {
         if(sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)==true) {
+            finish();
             Intent intent = new Intent(this, humanmission.class);
             startActivity(intent);
         }
@@ -94,6 +97,7 @@ public class Play_activity extends AppCompatActivity {
 
     public void Explorer(View view) {
         if(sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)==true) {
+            finish();
             Intent intent = new Intent(this, Explorer.class);
             startActivity(intent);
         }
@@ -146,6 +150,7 @@ public class Play_activity extends AppCompatActivity {
             Button textView = (Button) getActivity().findViewById(R.id.planet);
             textView.setText(text);
         }
+
     }
 
 

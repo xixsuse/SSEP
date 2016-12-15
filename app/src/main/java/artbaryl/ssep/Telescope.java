@@ -13,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -71,6 +72,7 @@ public class Telescope extends AppCompatActivity {
             int accuracy = day * 2;
             planetdatabase zb = new planetdatabase(this);
             zb.change_accuracy(sharedPreferences.getInt("photo", 0) + 1, accuracy);
+            editor.putInt("days", Integer.parseInt(days.getText().toString()));
             editor.putFloat("money", sharedPreferences.getFloat("money", 30) - Integer.parseInt(days.getText().toString()));
             editor.putBoolean(String.valueOf(sharedPreferences.getInt("level", 0)) + "level", true);
             editor.commit();
@@ -103,5 +105,18 @@ public class Telescope extends AppCompatActivity {
                 .setContentText("Ziomek hehe");
         notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(notificationId, builder.build());
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+            Intent intent = new Intent(this, Play_activity.class);
+            startActivity(intent);
+        }
+        return super.onKeyDown(keyCode, event);
+
     }
 }
