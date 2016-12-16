@@ -76,10 +76,12 @@ public class Play2_Game extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_play2__game, container, false);
         mars = (ImageView) v.findViewById(R.id.mars);
+        hideplanets(sharedPreferences.getInt("photo", 0));
         b = (Button) v.findViewById(R.id.button5);
         tl = (TextView) v.findViewById(R.id.tl);
         cash = (TextView) v.findViewById(R.id.cash);
         cash.setText(sharedPreferences.getFloat("money", 30) + "mln");
+        b.setText(planets[sharedPreferences.getInt("photo", 0)]);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

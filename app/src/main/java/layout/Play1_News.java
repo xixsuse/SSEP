@@ -22,6 +22,7 @@ public class Play1_News extends Fragment {
     SharedPreferences.Editor editor;
     private String mParam1;
     private String mParam2;
+    CharSequence [] planets = {"Moon", "Mars", "Ganimedes" ,"Europa", "Jupiter", "Titan", "Saturn", "Titania", "Uranus", "Triton", "Neptune"};
 
     private OnFragmentInteractionListener mListener;
     TextView YourNews1, YourNews2, YourNews3;
@@ -86,13 +87,25 @@ public class Play1_News extends Fragment {
     void setNews()
     {
         YourNews1.setText("The new company enters the space industry.");
-        YourNews2.setText("They prepares the first rocket to land on the moon.");
+        YourNews2.setText("They prepares the first rocket to land on the " + planets[sharedPreferences.getInt("level", 0)] + ".");
         YourNews3.setText("Let's check what they can do!");
-        if(sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)==true)
+        if(sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)==true && sharedPreferences.getInt("level", 0) ==0)
         {
-            YourNews1.setText("Scientists used telescope to observe the moon");
+            YourNews1.setText("Scientists used telescope to observe the " + planets[sharedPreferences.getInt("level", 0)] + ".");
             YourNews2.setText("They are waiting " + sharedPreferences.getInt("days", 0) + " days");
             YourNews3.setText("Let's check what they can do!");
+        }
+        else if(sharedPreferences.getInt("level", 0) > 0 && sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)==false)
+        {
+            YourNews1.setText("It's  small step for man big step for humanity!" );
+            YourNews2.setText("That's first time when human land on the " + planets[sharedPreferences.getInt("level", 0) -1] + "!");
+            YourNews3.setText("It's begin of exploration of solar system!");
+        }
+        else if(sharedPreferences.getInt("level", 0) > 0 && sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)!=false)
+        {
+            YourNews1.setText("Scienentists preparing to send next human mission to "  + planets[sharedPreferences.getInt("photo", 0)] + "!" );
+            YourNews2.setText("They used telescope for " + sharedPreferences.getInt("days", 0) + " days!");
+            YourNews3.setText("Stand by for new information!");
         }
     }
 }

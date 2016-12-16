@@ -69,15 +69,20 @@ public class Telescope extends AppCompatActivity {
     }
     public void start(View view) {
         if(sharedPreferences.getFloat("money", 30)>=Integer.parseInt(days.getText().toString())) {
-            int accuracy = day * 2;
-            planetdatabase zb = new planetdatabase(this);
-            zb.change_accuracy(sharedPreferences.getInt("photo", 0) + 1, accuracy);
-            editor.putInt("days", Integer.parseInt(days.getText().toString()));
-            editor.putFloat("money", sharedPreferences.getFloat("money", 30) - Integer.parseInt(days.getText().toString()));
-            editor.putBoolean(String.valueOf(sharedPreferences.getInt("level", 0)) + "level", true);
-            editor.commit();
-            Toast.makeText(getApplicationContext(), "We have new data!", Toast.LENGTH_SHORT).show();
-
+            if(sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)==true)
+            {
+                Toast.makeText(getApplicationContext(), "You already did it!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                int accuracy = day * 2;
+                planetdatabase zb = new planetdatabase(this);
+                zb.change_accuracy(sharedPreferences.getInt("photo", 0) + 1, accuracy);
+                editor.putInt("days", Integer.parseInt(days.getText().toString()));
+                editor.putFloat("money", sharedPreferences.getFloat("money", 30) - Integer.parseInt(days.getText().toString()));
+                editor.putBoolean(String.valueOf(sharedPreferences.getInt("level", 0)) + "level", true);
+                editor.commit();
+                Toast.makeText(getApplicationContext(), "We have new data!", Toast.LENGTH_SHORT).show();
+            }
         }
         else
         {
