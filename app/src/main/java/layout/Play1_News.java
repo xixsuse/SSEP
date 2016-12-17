@@ -29,7 +29,6 @@ public class Play1_News extends Fragment {
     public Play1_News() {
     }
 
-    // TODO: Rename and change types and number of parameters
     public static Play1_News newInstance(String param1, String param2) {
         Play1_News fragment = new Play1_News();
         Bundle args = new Bundle();
@@ -63,7 +62,6 @@ public class Play1_News extends Fragment {
         return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
 
 
     @Override
@@ -103,8 +101,14 @@ public class Play1_News extends Fragment {
         }
         else if(sharedPreferences.getInt("level", 0) > 0 && sharedPreferences.getBoolean(String.valueOf(sharedPreferences.getInt("level", 0))+"level",false)!=false)
         {
-            YourNews1.setText("Scienentists preparing to send next human mission to "  + planets[sharedPreferences.getInt("photo", 0)] + "!" );
+            YourNews1.setText("Scienentists preparing for next human mission on "  + planets[sharedPreferences.getInt("photo", 0)] + "!" );
             YourNews2.setText("They used telescope for " + sharedPreferences.getInt("days", 0) + " days!");
+            YourNews3.setText("Stand by for new information!");
+        }
+        else if(sharedPreferences.getInt("level", 0) == 12)
+        {
+            YourNews1.setText("Scienentists already explored all planets in solar system!" );
+            YourNews2.setText("They made it! Now they looking for something beyond horizon");
             YourNews3.setText("Stand by for new information!");
         }
     }

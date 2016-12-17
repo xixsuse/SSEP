@@ -131,8 +131,6 @@ public class Missions extends AppCompatActivity {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
         {
             finish();
-            Intent intent = new Intent(this, Play_activity.class);
-            startActivity(intent);
         }
         return super.onKeyDown(keyCode, event);
 

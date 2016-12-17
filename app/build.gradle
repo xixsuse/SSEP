@@ -7,8 +7,8 @@ android {
         applicationId "artbaryl.ssep"
         minSdkVersion 18
         targetSdkVersion 24
-        versionCode 5
-        versionName '0.71'
+        versionCode 7
+        versionName '0.8'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -33,5 +33,6 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.16.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta1'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
     testCompile 'junit:junit:4.12'
 }

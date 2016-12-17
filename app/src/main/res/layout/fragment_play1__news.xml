@@ -2,11 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/news"
+    android:background="@android:color/background_dark"
     tools:context="layout.Play1_News">
 
-    <!-- TODO: Update blank fragment layout -->
-
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/earthrota"
+        android:id="@+id/gifImageView"
+        />
     <TextView
         android:text="Breaking News"
         android:layout_width="wrap_content"
@@ -46,4 +50,7 @@
         android:textSize="25sp"
         android:layout_below="@+id/textView25"
         android:layout_alignParentStart="true" />
+
+
+
 </RelativeLayout>
