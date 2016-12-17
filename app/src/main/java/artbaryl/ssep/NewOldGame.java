@@ -44,6 +44,10 @@ public class NewOldGame extends AppCompatActivity {
         editor.clear();
         editor.putBoolean("Newgame", true);
         editor.commit();
+        planetdatabase zb = new planetdatabase(this);
+        for(int x=0; x < 12; x++) {
+            zb.change_accuracy(x, 100);
+        }
         Intent intent = new Intent(this, Play_activity.class);
         startActivity(intent);
     }

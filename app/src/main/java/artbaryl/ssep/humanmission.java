@@ -77,7 +77,8 @@ public class humanmission extends AppCompatActivity {
                 if(random>0) {
                     planetdatabase zb = new planetdatabase(this);
                     zb.change_accuracy(sharedPreferences.getInt("photo", 0) + 1, 0);
-                    editor.putInt("level", sharedPreferences.getInt("level", 0)+1);
+                        editor.putInt("level", sharedPreferences.getInt("level", 0) + 1);
+
                     Toast.makeText(getApplicationContext(), "Mission Succesed!", Toast.LENGTH_SHORT).show();
                     editor.putFloat("money", sharedPreferences.getFloat("money", 30) + 40);
                 }
